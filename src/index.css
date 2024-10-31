@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .align-element {
+    @apply mx-auto max-w-7xl px-8;
+  }
+  .bg-primary {
+    @apply bg-amber-950;
+  }
+
+  .text-primary {
+    @apply text-amber-900;
+  }
+
+  .icon-primary {
+    @apply h-16 w-16 text-primary;
+  }
+}
+
+/* #E9D5FF */
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:root {
+  --hero: 12rem;
+  --hero-mobile: 6rem;
+  --card: 47rem;
+  --card-md: 56rem;
+  --blog: 47rem;
+}
+
+body {
+  background-image: url("./hero_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero {
+  height: var(--hero);
+  position: relative;
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  background: rgba(78, 2, 2, 0.1);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.wave-container {
+  position: relative;
+  top: 1vh;
+  width: 100%;
+  height: 5vh;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 2;
+}
+
+.wave {
+  position: absolute;
+  width: 200%;
+  height: 10vh;
+  background: none;
+  top: -50;
+}
+
+.wave.wave1 {
+  z-index: 2;
+  animation: moveWaves 5s infinite linear;
+  opacity: 0.7;
+  fill: rgba(255, 255, 255, 0.6);
+}
+
+.wave.wave2 {
+  z-index: 1;
+  animation: moveWaves 8s infinite linear;
+  opacity: 0.5;
+  fill: rgba(255, 255, 255, 0.8);
+}
+
+.wave.wave3 {
+  z-index: 1;
+  animation: moveWaves 10s infinite linear;
+  opacity: 0.3;
+  fill: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes moveWaves {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
