@@ -1,34 +1,27 @@
-import { useFetchCMS } from "../hooks/fetchCMS";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-const BlogList = () => {
-  const { loading, items } = useFetchCMS();
+/* eslint-disable react/prop-types */
+import Blog from "./Blog";
 
-  if (loading) {
+const BlogList = ({ items }) => {
+  if (!items) {
     return (
       <section className='blogs'>
-        <h2>Loading...</h2>
+        <h2>No Data</h2>
       </section>
     );
   }
   return (
-    <section className='blogs'>
-      <div className='title'>
-        <h2>Blogs</h2>
-        <div className='title-underline'></div>
+    <>
+      <div className='text-6xl capitalize leading-relaxed text-center text-primary pt-5'>
+        <h2 className='text-white'>Blogs</h2>
       </div>
-      <div className='blogs-center'>
-        {items.map((item) => {
-          const { id, imgUrl, title, slug, text } = item;
-          return (
-            <a key={id} href={slug} className='blogs'>
-              <img src={imgUrl} alt={title} className='img' />
-              <h5>{title}</h5>
-              <p>{documentToReactComponents(text)}</p>
-            </a>
-          );
-        })}
-      </div>
-    </section>
+      <section className='lg:align-element relative'>
+        <div className='grid lg:grid-cols-2 xl:grid-cols-4 gap-8'>
+          {items.map((item) => {
+            return <Blog key={item.id} {...item} />;
+          })}
+        </div>
+      </section>
+    </>
   );
 };
 export default BlogList;

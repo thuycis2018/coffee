@@ -33,13 +33,6 @@
   --blog: 47rem;
 }
 
-body {
-  background-image: url("./hero_bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .hero {
   height: var(--hero);
   position: relative;
@@ -49,14 +42,15 @@ body {
   justify-content: center;
 }
 
-.hero-overlay {
+/* .hero-overlay {
   background: rgba(78, 2, 2, 0.1);
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-}
+  z-index: -1;
+} */
 
 .wave-container {
   position: relative;
@@ -104,4 +98,13 @@ body {
   100% {
     transform: translateX(-50%);
   }
+}
+
+.loading {
+  width: 6rem;
+  height: 6rem;
+  border: 5px solid var(--grey-400);
+  border-radius: 50%;
+  border-top-color: var(--primary-500);
+  animation: spinner 0.6s linear infinite;
 }

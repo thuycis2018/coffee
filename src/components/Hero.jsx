@@ -1,7 +1,7 @@
 const Hero = () => {
   return (
     <div className='pt-10'>
-      <div className='hero-overlay'></div>
+      {/* <div className='hero-overlay'></div> */}
       <div className='align-element items-center gap-8'>
         <article className='text-white text-center relative'>
           <p className='text-6xl capitalize leading-relaxed'>

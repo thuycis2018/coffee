@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const CardList = ({ slug, imgUrl, title }) => {
+const Card = ({ slug, imgUrl, title }) => {
   slug = `/blogs/${slug}`;
   return (
     <article className='bg-white rounded-lg shadow-md hover:shadow-xl duration-300'>
@@ -19,4 +19,4 @@ const CardList = ({ slug, imgUrl, title }) => {
     </article>
   );
 };
-export default CardList;
+export default Card;

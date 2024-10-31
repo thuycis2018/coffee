@@ -1,13 +1,11 @@
-import { useFetchCMS } from "../hooks/fetchCMS";
+/* eslint-disable react/prop-types */
 import Card from "./Card";
 
-const CardList = () => {
-  const { loading, items } = useFetchCMS(true);
-
-  if (loading) {
+const CardList = ({ items }) => {
+  if (!items) {
     return (
       <section className='blogs'>
-        <h2>Loading...</h2>
+        <h2>No Data</h2>
       </section>
     );
   }
