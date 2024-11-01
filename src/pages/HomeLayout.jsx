@@ -12,7 +12,7 @@ const HomeLayout = () => {
       <Navbar />
       <Hero />
       <Waves />
-      <section className='max-w-full lg:w-1/2 mx-auto bg-transparent w-5/6'>
+      <section>
         {isPageLoading ? <div className='loading' /> : <Outlet />}
       </section>
       <Footer />

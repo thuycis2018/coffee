@@ -37,7 +37,7 @@ const BlogPage = () => {
   if (data) {
     const { title, text, imgUrl } = data;
     return (
-      <div className='text-white'>
+      <div className='text-white lg:w-1/2 md:w-3/4 w-5/6 mx-auto'>
         <h1 className='capitalize text-3xl tracking-wide font-medium text-center pt-20'>
           {title}
         </h1>
