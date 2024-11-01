@@ -12,6 +12,7 @@ const HomeLayout = () => {
       <Navbar />
       <Hero />
       <Waves />
+      <div className='loading' />
       <section>
         {isPageLoading ? <div className='loading' /> : <Outlet />}
       </section>
