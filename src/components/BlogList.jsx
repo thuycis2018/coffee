@@ -1,13 +1,10 @@
 /* eslint-disable react/prop-types */
 import Blog from "./Blog";
+import { Navigate } from "react-router-dom";
 
 const BlogList = ({ items }) => {
   if (!items) {
-    return (
-      <section className='blogs'>
-        <h2>No Data</h2>
-      </section>
-    );
+    return <Navigate to='/' />;
   }
   return (
     <>

@@ -1,16 +1,28 @@
 import { useLoaderData } from "react-router-dom";
 import { getBlogs } from "../components/getCMSData";
 import CardList from "../components/CardList";
+import { useQuery } from "@tanstack/react-query";
 
-export const loader = async () => {
-  const items = getBlogs(true);
-  return items;
+const featuredBlogsQuery = (featured) => {
+  return {
+    queryKey: ["featured_blogs", featured || true],
+    queryFn: () => getBlogs(true),
+  };
 };
+
+export const loader =
+  (queryClient) =>
+  async ({ featured }) => {
+    await queryClient.ensureQueryData(featuredBlogsQuery(featured));
+    return null;
+  };
+
 const Home = () => {
-  const { items } = useLoaderData();
+  useLoaderData();
+  const { data } = useQuery(featuredBlogsQuery(true));
   return (
     <>
-      <CardList items={items} />
+      <CardList items={data} />
     </>
   );
 };

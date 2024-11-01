@@ -17,7 +17,7 @@ export const getBlogs = async (featured) => {
     return parseData(response, item);
   });
 
-  return { items };
+  return items;
 };
 
 export const searchBlogs = async (slug) => {
@@ -29,17 +29,17 @@ export const searchBlogs = async (slug) => {
     return parseData(response, item);
   });
 
-  return { items };
+  return items[0];
 };
 
-export const getBlog = async (id) => {
-  const response = await client.getEntry(id);
-  if (response.fields) {
-    return response.fields;
-  }
+// export const getBlog = async (id) => {
+//   const response = await client.getEntry(id);
+//   if (response.fields) {
+//     return response.fields;
+//   }
 
-  return { error: true };
-};
+//   return { error: true };
+// };
 
 const parseData = (response, item) => {
   const { title, text, slug, featured } = item.fields;

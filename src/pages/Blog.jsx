@@ -1,13 +1,23 @@
-import { useLoaderData } from "react-router-dom";
+import { Navigate, useLoaderData } from "react-router-dom";
 import { searchBlogs } from "../components/getCMSData";
 //import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { useQuery } from "@tanstack/react-query";
 
-export const loader = async ({ params }) => {
-  const { id } = params;
-  const items = searchBlogs(id);
-  return items;
+const blogQuery = (id) => {
+  return {
+    queryKey: ["blog", id],
+    queryFn: () => searchBlogs(id),
+  };
 };
+
+export const loader =
+  (queryClient) =>
+  async ({ params }) => {
+    const { id } = params;
+    await queryClient.ensureQueryData(blogQuery(id));
+    return { id };
+  };
 
 // const options = {
 //   renderNode: {
@@ -22,9 +32,10 @@ export const loader = async ({ params }) => {
 // };
 
 const BlogPage = () => {
-  const { items } = useLoaderData();
-  if (items && items[0]) {
-    const { title, text, imgUrl } = items[0];
+  const { id } = useLoaderData();
+  const { data } = useQuery(blogQuery(id));
+  if (data) {
+    const { title, text, imgUrl } = data;
     return (
       <div className='text-white'>
         <h1 className='capitalize text-3xl tracking-wide font-medium text-center pt-20'>
@@ -41,7 +52,7 @@ const BlogPage = () => {
       </div>
     );
   } else {
-    return <div>Invalid URL</div>;
+    return <Navigate to='/' />;
   }
 };
 export default BlogPage;
