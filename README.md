@@ -1,5 +1,4 @@
 # React + Vite
-<<<<<<< HEAD
 
 Install dependencies:
 
@@ -30,5 +29,3 @@ Show Playwright e2e test report:
 ```sh
 npm run test:e2e:report
 ```
-=======
->>>>>>> ca9973934d77c658cb5f8ae945f0fdc6600d8b1d
